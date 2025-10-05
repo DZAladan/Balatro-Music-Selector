@@ -35,5 +35,7 @@ This mod was also heavily inspired by [qvattro0](https://github.com/qvattr0)'s [
 # What I hope to do
 🔧 Make an injector for the Cardsauce mod in order to feature extra tracks even with Cardsauce installed.<br>
 <sup>🔧 Otherwise, being able to at least override its music selector with this one.</sup><br>
-🔧 Refactor the code to avoid all those repeated chunksm<br>
+🔧 Refactor the code to avoid all those repeated chunks.<br>
 <sup>I believe there's a way, but I don't know enough about Lua to do that.</sup>
+🔧 Make this mod modular.<br>
+<sup>Would be nice to allow everyone to add their own music by just dropping them inside a specific folder together with a file containing all the info. Sadly, all the music is hardcoded for now.</sup>
