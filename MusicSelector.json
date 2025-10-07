@@ -2,14 +2,14 @@
     "id": "musicselector",
     "name": "Music Selector",
     "author": ["DZ-Aladan", "BarrierTrio"],
-    "description": "Standalone music selector for Balatro obtained from the Cardsauce mod",
+    "description": "A music selector obtained by taking parts of the Cardsauce mod code",
     "prefix": "musel",
     "main_file": "main.lua",
-    "priority": 100,
+    "priority": 90000,
     "badge_colour": "ca5bc7",
     "badge_text_colour": "FFFFFF",
     "display_name": "Music Selector",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "dependencies": [
         "Steamodded (>=1.0.0~ALPHA-1404b)"
     ]
