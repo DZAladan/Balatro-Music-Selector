@@ -2,7 +2,7 @@
 Standalone Cardsauce music selector for Balatro
 
 # DISCLAIMER
-I'm NOT a programmer, I helped myself with templates and I tried my best to understand the code because I'm trying to learn Lua in my own way. A lot of the code in this mod comes from [Cardsauce](https://github.com/BarrierTrio/Cardsauce/). Please, support [the original devs](https://github.com/BarrierTrio).
+I'm NOT a programmer, I helped myself with templates/guides and I tried my best to understand the code because I'm trying to learn Lua in my own way. A lot of the code in this mod comes from [Cardsauce](https://github.com/BarrierTrio/Cardsauce/). Please, support [the original devs](https://github.com/BarrierTrio).
 
 # Why?
 I simply wanted to be able to choose different music and add my own, but I didn't want to install Cardsauce in its entirety just for that. So, I identified the chunk of code responsible for that and made it standalone, then I somehow managed to add a way to make it modular (but the procoess is still a little laborious. See the provided instructions) so that everyone can add their own music.<br>
