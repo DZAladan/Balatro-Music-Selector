@@ -5,12 +5,12 @@ Standalone Cardsauce music selector for Balatro
 I'm NOT a programmer, I helped myself with templates/guides and I tried my best to understand the code because I'm trying to learn Lua in my own way. A lot of the code in this mod comes from [Cardsauce](https://github.com/BarrierTrio/Cardsauce/). Please, support [the original devs](https://github.com/BarrierTrio).
 
 # Why?
-I simply wanted to be able to choose different music and add my own, but I didn't want to install Cardsauce in its entirety just for that. So, I identified the chunk of code responsible for that and made it standalone, then I somehow managed to add a way to make it modular (but the procoess is still a little laborious. See the [provided instructions](https://github.com/DZAladan/Balatro-Music-Selector/blob/main/README.md#how-to-add-your-own-music)) so that everyone can add their own music.<br>
+I simply wanted to be able to choose different music and add my own, but I didn't want to install Cardsauce in its entirety just for that. So, I identified the chunk of code responsible for that and made it standalone, then I somehow managed to add a way to make it modular (but the procoess is still a little laborious. See the [provided instructions](https://github.com/DZAladan/Balatro-Music-Selector/tree/main/README.md#how-to-add-your-own-music)) so that everyone can add their own music.<br>
 This mod was also heavily inspired by [qvattro0](https://github.com/qvattr0)'s [Balatro Music Replacer](https://github.com/qvattr0/balatro-music-replacer) which, however, is not a mod but an external software to literally replace the music files.
 
 # How it works
 It simply adds an extra option in the Audio settings that allows to pick different soundtracks.<br>
-The mod allows to [add custom music](https://github.com/DZAladan/Balatro-Music-Selector/blob/main/README.md#how-to-add-your-own-music) as well.
+The mod allows to [add custom music](https://github.com/DZAladan/Balatro-Music-Selector/blob/tree/README.md#how-to-add-your-own-music) as well.
 <img width="971" height="738" alt="image" src="https://github.com/user-attachments/assets/7ee221aa-3348-4396-8b1a-49b6479a54ff" />
 
 # Notes
