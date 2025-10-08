@@ -8,6 +8,9 @@ I'm NOT a programmer, I helped myself with templates/guides and I tried my best 
 I simply wanted to be able to choose different music and add my own, but I didn't want to install Cardsauce in its entirety just for that. So, I identified the chunk of code responsible for that and made it standalone, then I somehow managed to add a way to make it modular (but the procoess is still a little laborious. See the provided instructions) so that everyone can add their own music.<br>
 This mod was also heavily inspired by [qvattro0](https://github.com/qvattr0)'s [Balatro Music Replacer](https://github.com/qvattr0/balatro-music-replacer) which, however, is not a mod but an external software to literally replace the music files.
 
+# How it works
+it simply adds an extra option in the Audio settings that allows to pick different soundtracks.
+
 # Notes
 ⚠️ If you have the Cardsauce mod installed, **this mod won't load**. This is by design: since this mod is essentially a piece of the other, I preferred to avoid any issues and conflicts because I currently lack the skills to solve them.<br>
 ⚠️ If any of the original authors of the soundtracks featured in this mod come forward and ask me to remove their work, **I will comply without question**.<br>
