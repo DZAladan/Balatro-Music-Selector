@@ -11,7 +11,7 @@ SMODS.Sound({
     key = mpack_name .. "_music1",
     path = mpack_name .. "/music1.ogg", -- .ogg files are recommended. Aside from that, files can actually have any name and .wav format is supported as well, but it's recommended to use the standards provided, otherwise each "path" variable will need to be changed for each track with a different name/extension.
     select_music_track = function()
-        return (G.SETTINGS.music_selection == mpack_name) and 10 or false
+        return G.SETTINGS.music_selection == mpack_name and 10 or false
         -- This is the track that it's going to be used for the main menu and Small/Big Blinds.
     end,
 })
@@ -22,7 +22,11 @@ SMODS.Sound({
     key = mpack_name .. "_music2",
     path = mpack_name .. "/music2.ogg",
     select_music_track = function()
-        return (G.SETTINGS.music_selection == mpack_name and G.booster_pack_sparkles and not G.booster_pack_sparkles.REMOVED) and 11 or false -- This is the track that it's going to be used for Booster and Arcana Packs.
+        return G.SETTINGS.music_selection == mpack_name and (((G.booster_pack_sparkles and not G.booster_pack_sparkles.REMOVED) or (not G.booster_pack_meteors and G.booster_pack and not G.booster_pack.removed)) and 11) or false --[[ This is the track that it's going to be used for Standard, Buffoon, Spectral and Arcana Packs.
+        
+        Broken down, it checks if a booster pack contains the "G.booster_pack_sparkles" function (Standard, Arcana or Spectral); if it doesn't, it checks if it also doesn't contain "G.booster_pack_meteors" (Celestial) and if it has the "G.booster_pack" function (like any booster pack). This is because Balatro, in its code, uses the existence of these functions to determine if play a specific music track or not. Buffoon Packs, however, have neither and Balatro simply checks the presence of "G.booster_pack", which will also act as a fallthrough (= ignore everything that doesn't match the instructions and keep going straight to the next one) to prevent a crash in case, for example, a music file is corrupted or missing.
+        
+        This function has been written by WiN'ter, Cardsauce lead dev (thank you!) ]]
     end,
 })
 
@@ -32,7 +36,7 @@ SMODS.Sound({
     key = mpack_name .. "_music3",
     path = mpack_name .. "/music3.ogg",
     select_music_track = function()
-        return (G.SETTINGS.music_selection == mpack_name and G.booster_pack_meteors and not G.booster_pack_meteors.REMOVED) and 11 or false -- This is the track that it's going to be used for Celestial Packs.
+        return G.SETTINGS.music_selection == mpack_name and ((G.booster_pack_meteors and not G.booster_pack_meteors.REMOVED) and 11) or false -- This is the track that it's going to be used for Celestial Packs.
     end,
 })
 
@@ -42,7 +46,7 @@ SMODS.Sound({
     key = mpack_name .. "_music4",
     path = mpack_name .. "/music4.ogg",
     select_music_track = function()
-        return (G.SETTINGS.music_selection == mpack_name and G.shop and not G.shop.REMOVED) and 11 or false -- This is the track that it's going to be used for the shop.
+        return G.SETTINGS.music_selection == mpack_name and ((G.shop and not G.shop.REMOVED) and 11) or false -- This is the track that it's going to be used for the shop.
     end,
 })
 
@@ -52,7 +56,7 @@ SMODS.Sound({
     key = mpack_name .. "_music5",
     path = mpack_name .. "/music5.ogg",
     select_music_track = function()
-        return (G.SETTINGS.music_selection == mpack_name and G.GAME.blind and G.GAME.blind.boss) and 11 or false -- This is the track that it's going to be used for the Boss Blinds.
+        return G.SETTINGS.music_selection == mpack_name and ((G.GAME.blind and G.GAME.blind.boss) and 11) or false -- This is the track that it's going to be used for the Boss Blinds.
     end,
 })
 

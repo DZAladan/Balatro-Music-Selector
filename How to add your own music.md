@@ -1,9 +1,9 @@
 1. Choose a name for your music pack (it must be all lowercase);
 2. Create inside "assets/sounds" a folder with the name you chose for the pack;
    - You can also rename the "template" folder, but it's recommended to keep it for future uses.
-3. Place inside that folder the music files (in .ogg format) of your choice, being mindful of this naming convention:
+3. Place inside that folder the music files (in .ogg format) of your choice, being mindful of using these exact names:
    - music1.ogg = main menu, Small and Big Blinds
-   - music2.ogg = Arcana and Booster Packs
+   - music2.ogg = Standard, Buffoon, Spectral and Arcana Packs
    - music3.ogg = Celestial Packs
    - music4.ogg = Shop
    - music5.ogg = Boss Blinds

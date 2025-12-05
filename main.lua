@@ -1,9 +1,9 @@
 -- Note for developers --
 -- The reason why this code is so heavily commented is because it's supposed to be read by people who want to try making a mod and have zero coding knowledge. The comments are supposed to teach them how each part works, at the best of my understanding. Feedback to improve the explanations are welcomed.
 -- Check out Rare K's "Balatro Modding 101, How to Install & Make Mods! 2025 Edition!" https://www.youtube.com/watch?v=n5pBgrOFHoA to get some extra help.
--- Credits to BarrierTrio ( https://github.com/BarrierTrio ) for most of the code used in all files.
+-- Credits to BarrierTrio ( https://github.com/BarrierTrio ) for most of the code used in all files and WiN'ter (Cardsauce lead dev) for providing a fix to Buffoon Packs not playing the correct music.
 
-SMODS.Atlas({ key = "modicon", path = "musicSelector_icon.png", px = 32, py = 32 })-- SMODS is what's called a "global table" written inside Steamodded's code. What comes after the period, "Atlas" in this case, is the function located inside that table that is going to be executed. In simpler terms, it's pre-written code by someone else that can be used instead of having to write the code ourselves.
+SMODS.Atlas({ key = "modicon", path = "musicselector_icon.png", px = 32, py = 32 })-- SMODS is what's called a "global table" written inside Steamodded's code. What comes after the period, "Atlas" in this case, is the function located inside that table that is going to be executed. In simpler terms, it's pre-written code by someone else that can be used instead of having to write the code ourselves.
 
 local mpack_files = { -- Add the mpack_name here. This has to be done manually because there's no way to make Lua autonomously browse folders without LuaFileSystem, an external library.
 "cardsauce",
@@ -57,7 +57,8 @@ do = closes the loop statement. Everything beyond this, up to "end", will run in
 end -- This ends the loop.
 
 if not cardsauce_detected then -- For now, the mod is designed to not load if Cardsauce is enabled to prevent conflicts. I may try working around this in the future, possibly by trying to inject extra tracks if detected, or try to override its own selector (at worst).
- setting_tabRef = G.UIDEF.settings_tab -- "UIDEF" is the table containing the definitions to add UI elements. In this case, it's calling a function to define a tab for the settings menu ("settings_tab") and the value it returns will be used as a variable.
+ setting_tabRef = G.UIDEF.settings_tab --[[ The letter "G" stand for "Game", and it's a Balatro native global function.
+ "UIDEF" is the table containing the definitions to add UI elements. In this case, it's calling a function to define a tab for the settings menu ("settings_tab") and the value it returns will be used as a variable.]]
  function G.UIDEF.settings_tab(tab) -- Runs the "G.UIDEF.settings_tab" functions and assigns it "tab" as an argument.
   local setting_tab = setting_tabRef(tab) -- The variable will return the result of "setting_tabRef" with the given argument as a value.
    if tab == 'Audio' then -- This makes the game render the selector in the Audio tab.
@@ -91,7 +92,7 @@ if not cardsauce_detected then -- For now, the mod is designed to not load if Ca
 
  -- Sets the current music in balatro's settings to one of the given args.
  G.FUNCS.change_music = function(args)
-  G.ARGS.music_vals = music_vals_list
+  G.ARGS.music_vals = G.ARGS.music_vals or music_vals_list
   G.SETTINGS.QUEUED_CHANGE.music_change = G.ARGS.music_vals[args.to_key]
   G.SETTINGS.music_selection = G.ARGS.music_vals[args.to_key]
  end

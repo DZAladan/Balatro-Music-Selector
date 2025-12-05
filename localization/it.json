@@ -1,15 +1,15 @@
 {
     "id": "musicselector",
     "name": "Music Selector",
-    "author": ["DZ-Aladan", "BarrierTrio"],
-    "description": "Un selettore di musica ricavato da porzioni di codice dalla mod Cardsauce",
+    "author": ["DZ-Aladan", "BarrierTrio", "WiN'ter"],
+    "description": "Un selettore di musica ottenuto prendendo porzioni dei codice dalla mod Cardsauce",
     "prefix": "musel",
     "main_file": "main.lua",
-    "priority": 90000,
+    "priority": 900000,
     "badge_colour": "ca5bc7",
     "badge_text_colour": "FFFFFF",
     "display_name": "Music Selector",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "dependencies": [
         "Steamodded (>=1.0.0~ALPHA-1404b)"
     ]
