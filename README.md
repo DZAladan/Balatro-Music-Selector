@@ -1,5 +1,5 @@
 # Balatro Music Selector
-Standalone Cardsauce music selector for Balatro
+Standalone music selector for Balatro with additional soundtracks, fixes, and improved compatibility with other mods that edit the settings menu.
 
 # DISCLAIMER
 I'm NOT a programmer, I helped myself with templates/guides and I tried my best to understand the code because I'm trying to learn Lua in my own way. A lot of the code in this mod comes from [Cardsauce](https://github.com/BarrierTrio/Cardsauce/). Please, support [the original devs](https://github.com/BarrierTrio).
@@ -30,8 +30,12 @@ The mod allows to [add custom music](#how-to-add-your-own-music) as well.
 <sup>↳ [YouTube](https://www.youtube.com/@afterlight_games) | [Bandcamp](https://afterlightgames.bandcamp.com/album/b-side) | [GitHub](https://github.com/afterlightgames)</sup><br>
 ❇️ [Bonne Soirée](https://www.youtube.com/watch?v=KiIXRr_GGCw) by Vongola<br>
 <sup>↳ [YouTube](https://www.youtube.com/@vongol) | [Soundcloud](https://soundcloud.com/vongolavonvongola) | [Ko-Fi](https://ko-fi.com/vonkofi)</sup><br>
+❇️ Bonne Soirée (Slowed Down) by Vongola - the same music played slower (pitch 0.7), as a separate option<br>
 ❇️ [Going In Blind](https://www.youtube.com/watch?v=oRoLuU3vA8E) by Recycled Scraps ([standalone mod](https://github.com/Parsa-ALONE9GHOST/Going-In-Blind))<br>
 <sup>↳ [YouTube](https://www.youtube.com/@RecycledScraps)</sup><br>
+❇️ Alternative Soundtrack by Hoverman ([standalone mod](https://github.com/hocermanc/balatro_alt_music)) - all 16 tracks, ante-based switching kept<br>
+❇️ Cryptid OST by the Cryptid team ([Cryptid mod](https://github.com/SpectralPack/Cryptid)) - all 7 music tracks (menu themes, Code, Jimball, Big, Exotic)<br>
+❇️ Grab Bag OST by ViperDemon (music of the Grab Bag mod by Th30ne) - not copied: listed as an option when the Grab Bag mod is installed with its Custom Music setting on<br>
 ❇️ [Monkey Business](https://www.youtube.com/watch?v=V3ps8wvrmxw) by Bombaflex<br>
  <sup>↳ [YouTube](https://www.youtube.com/@bombaflex2383) | [Spotify](https://open.spotify.com/intl-it/artist/1rL5Ni1ym91shGIswrLhdu) | [Instagram](https://imginn.com/elbombaflex) | [GitHub](https://github.com/Bombaflex) | [Portfolio](https://jbombaron.wixsite.com/bombaflex-portfolio)</sup><br>
 ❇️ [Raise The Stakes](https://www.youtube.com/watch?v=p6TGmmQ_Fj4) by JohnathanSucks ([standalone mod](https://github.com/JohnathanSucks/Raise-The-Stakes))<br>
@@ -69,3 +73,23 @@ The mod allows to [add custom music](#how-to-add-your-own-music) as well.
 # What I hope to do
 🔧 Make an injector for the Cardsauce mod in order to feature extra tracks even with Cardsauce installed.<br>
 <sup>🔧 Otherwise, being able to at least override its music selector with this one.</sup>
+
+
+## 1.3.1 - Grab Bag OST shows up even with Grab Bag's Custom Music off
+- Fix: **Grab Bag OST - ViperDemon** was missing from the Soundtrack cycler when Grab Bag's own "Custom Music" setting was off, because Grab Bag then registers no music at all. The option now appears whenever Grab Bag is installed and enabled.
+- If you pick it while Grab Bag's Custom Music is off, this mod plays the same five tracks straight from Grab Bag's folder (still no audio copied).
+
+## 1.3.0 - Grab Bag OST
+- New soundtrack option: **Grab Bag OST - ViperDemon**. It appears in the Soundtrack cycler when the Grab Bag mod is installed (from 1.3.1 on this works with Grab Bag's Custom Music on or off).
+- Before, Grab Bag's music played whenever its own checkbox was on and overrode whichever soundtrack you picked here. Now it only plays while **Grab Bag OST** is the selected soundtrack (so the other soundtracks, and the Balatro OST, play normally again).
+- No Grab Bag audio is copied into this mod. It uses the files from the Grab Bag mod itself.
+
+## 1.2.1 - Slowed Down Bonne Soirée + faster soundtrack switching
+- New soundtrack option: **Bonne Soirée (Slowed Down) - Vongola** (the same audio as Bonne Soirée, played at 0.7 speed/pitch; reuses the existing audio files, so no extra disk space).
+- Speed fix: the game used to start every music track of every mod at once (80+), but only 64 sounds can play at the same time, so many soundtracks were slow to start or silent until you changed menu tab and chose again. `lovely/sound_limit.toml` now makes the game start only the tracks of the soundtrack that is playing. (Delete that one file to go back to the old behaviour.)
+- The Soundtrack cycler's callback is now re-applied after the Audio tab is built, so another mod can no longer take it over.
+
+## 1.1.0 - Lost Edition OST built in
+- If the **Lost Edition** mod is installed, its soundtrack now shows up as an option (right after the base Balatro OST) in this mod's Soundtrack cycler.
+- Lost Edition's own duplicate "Soundtrack" cycler is hidden, so there is only one selector.
+- The selected option is always the soundtrack that plays (the old duplicate selector swapped Balatro and Lost Edition).
