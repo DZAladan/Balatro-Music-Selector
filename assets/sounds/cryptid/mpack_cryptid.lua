@@ -3,8 +3,10 @@
 -- This pack does NOT need Cryptid to be installed: it never calls Cryptid code, it only looks for
 -- Cryptid's jokers/cards/profile data if they happen to exist.
 --
--- Cryptid's music only replaces the music in special situations (it has no tracks for ordinary blinds,
--- the shop, etc.), so everywhere else the normal Balatro music keeps playing.
+-- Cryptid itself only has music for special situations (it has no tracks for ordinary blinds, the shop, etc.).
+-- Before 1.3.2 this soundtrack then fell back to the normal Balatro music there, so picking Cryptid in the shop
+-- gave you the base game's shop music. Now the Cryptid menu theme keeps playing in those ordinary situations
+-- (see "ordinary_music" below), and the four event tracks still take over when their trigger is active.
 --
 -- Without the Cryptid mod, the four "event" tracks are mapped to normal Balatro moments instead
 -- (see the settings just below). If Cryptid IS installed, its own triggers work as well.
@@ -28,6 +30,11 @@ local menu_theme = "random"
 local use_vanilla_triggers = true                      -- set to false to only use Cryptid's own triggers
 local jimball_jokers = { "j_blueprint", "j_brainstorm" } -- owning any of these plays the Jimball track
 local big_score_threshold = 1e10                       -- best hand this run must reach this for the "big" track
+
+-- What to play in a run when none of the four event tracks above is active (ordinary blinds, shop, packs, boss):
+--   "cryptid" -> the Cryptid menu theme of the current gameset keeps playing (default)
+--   "balatro" -> fall back to the normal Balatro music, like Cryptid itself does
+local ordinary_music = "cryptid"
 
 local themes = { "mainline", "modest", "madness" }
 local fallback_theme = menu_theme
@@ -65,8 +72,8 @@ end
 
 -- Main-menu theme logic. Same rules as Cryptid (profile gameset / currently highlighted gameset); if there is
 -- no gameset information at all (Cryptid not installed) the menu_theme above is used instead.
-local function menu_match(name)
-    if not (G.STAGES and G.STAGE == G.STAGES.MAIN_MENU) then return false end
+local function menu_match(name, anywhere)
+    if not anywhere and not (G.STAGES and G.STAGE == G.STAGES.MAIN_MENU) then return false end
     local profile = G.PROFILES and G.PROFILES[G.SETTINGS.profile]
     local profile_gameset = profile and profile.cry_gameset
     local selected_gameset = G.selectedGameset
@@ -142,21 +149,31 @@ add_track("music_exotic", "music_exotic.ogg", { volume = 0.4 }, function()
     return false
 end)
 
+-- Priority of a theme track: 0 in the main menu, -1 (lowest, loses to every event track) during a run when
+-- ordinary_music is "cryptid", otherwise not played.
+local function theme_priority(name)
+    if G.STAGES and G.STAGE == G.STAGES.MAIN_MENU then
+        return menu_match(name) and 0
+    end
+    if ordinary_music ~= "cryptid" then return false end
+    return menu_match(name, true) and -1
+end
+
 -- Main-menu themes, one per Cryptid gameset. Original volume 0.7, synced with each other.
 add_track("music_mainline", "music_mainline.ogg", {
     volume = 0.7,
     sync = { music_modest = true, music_madness = true },
-}, function() return menu_match("mainline") and 0 end)
+}, function() return theme_priority("mainline") end)
 
 add_track("music_madness", "music_madness.ogg", {
     volume = 0.7,
     sync = { music_modest = true, music_mainline = true },
-}, function() return menu_match("madness") and 0 end)
+}, function() return theme_priority("madness") end)
 
 add_track("music_modest", "music_modest.ogg", {
     volume = 0.7,
     sync = { music_mainline = true, music_madness = true },
-}, function() return menu_match("modest") and 0 end)
+}, function() return theme_priority("modest") end)
 
  music_nums_ref[mpack_name] = next_music_num_id_ref[1]
  table.insert(music_vals_list_ref, mpack_name)

@@ -75,6 +75,12 @@ The mod allows to [add custom music](#how-to-add-your-own-music) as well.
 <sup>🔧 Otherwise, being able to at least override its music selector with this one.</sup>
 
 
+## 1.3.2 - Context-aware soundtrack switching
+- Fix: picking **Cryptid OST** (or switching to it mid-shop) played the base Balatro music in the shop, ordinary blinds, packs and boss blinds, because Cryptid only has tracks for special situations. The Cryptid menu theme of the current gameset now plays in those situations, and the Jimball, Code, Exotic and Big tracks still take over when their trigger is active. Set `ordinary_music = "balatro"` at the top of `assets/sounds/cryptid/mpack_cryptid.lua` to get the old behaviour back.
+- Fix: **Going in Blind** had no Celestial pack track (its track 3 copied the Arcana rule, so Celestial packs played the blind music). Track 2 is now Arcana and other packs, track 3 is Celestial.
+- Fix: every soundtrack checked `booster_pack.removed` (lowercase), which never matches, so pack music could keep playing after a pack closed. It now uses `REMOVED` like the base game.
+- Fix: **Alternative Soundtrack** shop, Arcana and Celestial tracks now also stop once the shop or pack is removed.
+
 ## 1.3.1 - Grab Bag OST shows up even with Grab Bag's Custom Music off
 - Fix: **Grab Bag OST - ViperDemon** was missing from the Soundtrack cycler when Grab Bag's own "Custom Music" setting was off, because Grab Bag then registers no music at all. The option now appears whenever Grab Bag is installed and enabled.
 - If you pick it while Grab Bag's Custom Music is off, this mod plays the same five tracks straight from Grab Bag's folder (still no audio copied).

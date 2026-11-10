@@ -102,15 +102,15 @@ end, {
 })
 
 add_track("music_tarot", "music_tarot.ogg", function()
-    return in_set1() and G.booster_pack and 50
+    return in_set1() and G.booster_pack and not G.booster_pack.REMOVED and 50
 end)
 
 add_track("music_planet", "music_planet.ogg", function()
-    return in_set1() and G.booster_pack_meteors and 100
+    return in_set1() and G.booster_pack_meteors and not G.booster_pack_meteors.REMOVED and 100
 end)
 
 add_track("music_shop", "music_shop.ogg", function()
-    return in_set1() and G.shop and 10
+    return in_set1() and G.shop and not G.shop.REMOVED and 10
 end)
 
 add_track("music_boss", "music_boss.ogg", function()
@@ -139,15 +139,15 @@ end, {
 })
 
 add_track("music_tarot_ante3", "music_tarot_ante3.ogg", function()
-    return in_set2() and G.booster_pack and 49
+    return in_set2() and G.booster_pack and not G.booster_pack.REMOVED and 49
 end)
 
 add_track("music_planet_ante3", "music_planet_ante3.ogg", function()
-    return in_set2() and G.booster_pack_meteors and 99
+    return in_set2() and G.booster_pack_meteors and not G.booster_pack_meteors.REMOVED and 99
 end)
 
 add_track("music_shop_ante3", "music_shop_ante3.ogg", function()
-    return in_set2() and G.shop and 9
+    return in_set2() and G.shop and not G.shop.REMOVED and 9
 end)
 
 add_track("music_boss_ante3", "music_boss_ante3.ogg", function()

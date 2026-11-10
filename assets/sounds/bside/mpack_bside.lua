@@ -20,7 +20,7 @@ SMODS.Sound({
     key = "music_arcana_loop",
     path = mpack_name .. "/music_arcana_loop.ogg",
     select_music_track = function()
-        return G.SETTINGS.music_selection == mpack_name and (((G.booster_pack_sparkles and not G.booster_pack_sparkles.REMOVED) or (not G.booster_pack_meteors and G.booster_pack and not G.booster_pack.removed)) and 11) or false
+        return G.SETTINGS.music_selection == mpack_name and (((G.booster_pack_sparkles and not G.booster_pack_sparkles.REMOVED) or (not G.booster_pack_meteors and G.booster_pack and not G.booster_pack.REMOVED)) and 11) or false
     end,
 })
 
